@@ -10,7 +10,7 @@ const SolutionSection: React.FC = () => {
         <div className="text-center mb-16">
           <FadeIn>
             <h2 className="font-playfair font-bold text-4xl md:text-5xl text-teal-900 mb-4">
-              Meet Hemp-Based Body Care That Actually Works
+              Meet Premium Body Care That Actually Works
             </h2>
             <p className="font-sans text-lg text-teal-800 max-w-3xl mx-auto">
               Backed by European organic standards, third-party lab testing, and 12,000+ bodies that finally feel at ease.
@@ -56,7 +56,7 @@ const SolutionSection: React.FC = () => {
             <SolutionPillar 
               icon={<Leaf className="text-white" size={24} />}
               title="Targeted Botanical Compounds"
-              text="Hemp extract works with your body's natural systems to soothe discomfort and calm stressed tissue. No gimmicks. Just biology."
+              text="Organic extract works with your body's natural systems to soothe discomfort and calm stressed tissue. No gimmicks. Just biology."
               delay={100}
             />
             <SolutionPillar 
