@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { X, Copy, Check, ArrowRight } from 'lucide-react';
-import { trackPixelEvent } from '../utils/pixel';
+import { handleOutboundClick } from '../utils/pixel';
 
 const ExitIntentPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -105,7 +105,7 @@ const ExitIntentPopup: React.FC = () => {
 
                 <a 
                   href="https://www.endoca.com/cbd-products/cbd-cream"
-                  onClick={() => trackPixelEvent('Search', { content_name: 'Exit Intent Popup CTA' })}
+                  onClick={(e) => handleOutboundClick(e, 'https://www.endoca.com/cbd-products/cbd-cream', 'Search', { content_name: 'Exit Intent Popup CTA' })}
                   className="w-full block bg-coral hover:bg-orange-500 text-white font-poppins font-bold py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 mb-4 tracking-widest"
                 >
                   USE MY CODE NOW

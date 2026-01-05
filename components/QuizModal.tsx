@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, ArrowRight, Activity, Droplet, Sparkles, Moon, Leaf, Check } from 'lucide-react';
 import { products } from '../data/products';
 import { Product } from '../types';
-import { trackPixelEvent } from '../utils/pixel';
+import { trackPixelEvent, handleOutboundClick } from '../utils/pixel';
 
 interface QuizModalProps {
   isOpen: boolean;
@@ -226,8 +226,9 @@ const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
                       <p className="text-gray-600 italic mb-6 leading-relaxed max-w-lg mx-auto">{rec.reason}</p>
                       <a 
                         href={rec.product.link}
-                        onClick={() => {
-                          trackPixelEvent('Search', { content_name: rec.product.name, source: 'Quiz Result' });
+                        onClick={(e) => {
+                          // Allow navigation via helper
+                          handleOutboundClick(e, rec.product.link, 'Search', { content_name: rec.product.name, source: 'Quiz Result' });
                           onClose();
                         }}
                         className="inline-block bg-coral hover:bg-orange-500 text-white font-bold py-3 px-8 rounded-full text-xs tracking-widest transition-colors shadow-md hover:shadow-lg"
@@ -249,9 +250,9 @@ const QuizModal: React.FC<QuizModalProps> = ({ isOpen, onClose }) => {
                 <div className="pt-4">
                   <a 
                     href="https://www.endoca.com/cbd-products/cbd-cream" 
-                    onClick={() => {
-                      trackPixelEvent('Search', { content_name: 'Quiz Full Collection' });
-                      onClose();
+                    onClick={(e) => {
+                       handleOutboundClick(e, 'https://www.endoca.com/cbd-products/cbd-cream', 'Search', { content_name: 'Quiz Full Collection' });
+                       onClose();
                     }}
                     className="block w-full sm:w-auto mx-auto bg-teal-900 hover:bg-teal-800 text-white font-poppins font-bold py-4 px-12 rounded-full shadow-lg transition-all hover:scale-105 text-center"
                   >

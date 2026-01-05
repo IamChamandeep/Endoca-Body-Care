@@ -2,7 +2,7 @@ import React from 'react';
 import Section from './ui/Section';
 import FadeIn from './ui/FadeIn';
 import { ArrowRight, Activity, Droplet, Sparkles, Heart, Wind, Waves } from 'lucide-react';
-import { trackPixelEvent } from '../utils/pixel';
+import { handleOutboundClick } from '../utils/pixel';
 
 const benefits = [
   {
@@ -85,7 +85,7 @@ const ProductShowcase: React.FC = () => {
                 <div className="mt-auto">
                   <a 
                     href={benefit.link}
-                    onClick={() => trackPixelEvent('Search', { search_string: benefit.title })}
+                    onClick={(e) => handleOutboundClick(e, benefit.link, 'Search', { search_string: benefit.title })}
                     className="inline-flex items-center gap-2 font-poppins font-bold text-sm text-coral uppercase tracking-widest group-hover:gap-3 transition-all"
                   >
                     Explore Formula <ArrowRight size={16} />
@@ -102,7 +102,7 @@ const ProductShowcase: React.FC = () => {
         <div className="text-center">
           <a 
             href="https://www.endoca.com/cbd-products/cbd-cream"
-            onClick={() => trackPixelEvent('Search', { content_name: 'Product Showcase Full Collection' })}
+            onClick={(e) => handleOutboundClick(e, 'https://www.endoca.com/cbd-products/cbd-cream', 'Search', { content_name: 'Product Showcase Full Collection' })}
             className="inline-flex bg-teal-900 hover:bg-teal-800 text-white font-poppins font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 items-center gap-2 mx-auto tracking-widest text-sm"
           >
             SHOP THE FULL COLLECTION <ArrowRight size={18} />

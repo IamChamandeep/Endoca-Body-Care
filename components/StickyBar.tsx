@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { trackPixelEvent } from '../utils/pixel';
+import { handleOutboundClick } from '../utils/pixel';
 
 const StickyBar: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,7 +53,7 @@ const StickyBar: React.FC = () => {
 
           <a 
             href="https://www.endoca.com/cbd-products/cbd-cream"
-            onClick={() => trackPixelEvent('Search', { content_name: 'Sticky Bar CTA' })}
+            onClick={(e) => handleOutboundClick(e, 'https://www.endoca.com/cbd-products/cbd-cream', 'Search', { content_name: 'Sticky Bar CTA' })}
             className="bg-coral hover:bg-orange-500 text-white font-poppins font-bold py-2 px-6 rounded-full shadow-md text-xs tracking-widest transition-colors"
           >
             EXPLORE
