@@ -2,12 +2,18 @@ import React from 'react';
 import Section from './ui/Section';
 import FadeIn from './ui/FadeIn';
 import { CreditCard, Truck, Users } from 'lucide-react';
+import { trackPixelEvent } from '../utils/pixel';
 
 interface FinalCTAProps {
   onOpenQuiz: () => void;
 }
 
 const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenQuiz }) => {
+  const handleQuizClick = () => {
+    trackPixelEvent('Search', { content_name: 'Final CTA Quiz' });
+    onOpenQuiz();
+  };
+
   return (
     <Section className="bg-cream text-center">
       <div className="container mx-auto px-6">
@@ -22,12 +28,13 @@ const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenQuiz }) => {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-12">
             <a 
               href="https://www.endoca.com/cbd-products/cbd-cream"
+              onClick={() => trackPixelEvent('Search', { content_name: 'Final CTA Collection' })}
               className="w-full sm:w-auto bg-coral hover:bg-orange-500 text-white font-poppins font-bold py-4 px-10 rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 tracking-widest text-sm inline-flex justify-center items-center"
             >
               SHOP COLLECTION
             </a>
             <button 
-              onClick={onOpenQuiz}
+              onClick={handleQuizClick}
               className="w-full sm:w-auto bg-transparent border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white font-poppins font-bold py-4 px-10 rounded-full transition-all duration-300 tracking-widest text-sm"
             >
               TAKE QUIZ

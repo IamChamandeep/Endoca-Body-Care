@@ -2,6 +2,7 @@ import React from 'react';
 import Section from './ui/Section';
 import FadeIn from './ui/FadeIn';
 import { ArrowRight, ShieldCheck, Truck, RotateCcw, Clock, Eye, Flame } from 'lucide-react';
+import { trackPixelEvent } from '../utils/pixel';
 
 const UrgencyGuarantee: React.FC = () => {
   return (
@@ -51,6 +52,7 @@ const UrgencyGuarantee: React.FC = () => {
 
              <a 
                href="https://www.endoca.com/cbd-products/cbd-cream"
+               onClick={() => trackPixelEvent('Search', { content_name: 'Urgency Section CTA' })}
                className="w-full md:w-auto bg-coral hover:bg-orange-500 text-white font-poppins font-bold py-5 px-12 rounded-full shadow-[0_0_30px_rgba(255,107,88,0.5)] hover:shadow-[0_0_40px_rgba(255,107,88,0.7)] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 text-lg tracking-widest animate-pulse-slow"
              >
                DISCOVER THE FULL COLLECTION NOW <ArrowRight size={20} />

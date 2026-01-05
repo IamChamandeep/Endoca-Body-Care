@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, FlaskConical, Leaf, Truck } from 'lucide-react';
+import { trackPixelEvent } from '../utils/pixel';
 
 interface HeroProps {
   onOpenQuiz: () => void;
@@ -13,6 +14,15 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleQuizClick = () => {
+    trackPixelEvent('Search', { content_name: 'Hero Quiz CTA' });
+    onOpenQuiz();
+  };
+
+  const handleExploreClick = () => {
+    trackPixelEvent('Search', { content_name: 'Hero Explore Collection' });
+  };
 
   return (
     <div className="relative min-h-[85vh] flex flex-col overflow-hidden bg-gradient-to-br from-teal-900 to-teal-800 text-white">
@@ -84,12 +94,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
           <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
             <a 
               href="https://www.endoca.com/cbd-products/cbd-cream"
+              onClick={handleExploreClick}
               className="bg-coral hover:bg-orange-500 text-white font-poppins font-bold py-4 px-8 rounded-full shadow-[0_0_20px_rgba(255,107,88,0.4)] hover:shadow-[0_0_30px_rgba(255,107,88,0.6)] transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 tracking-widest text-sm"
             >
               EXPLORE THE COLLECTION <ArrowRight size={18} />
             </a>
             <button 
-              onClick={onOpenQuiz}
+              onClick={handleQuizClick}
               className="group flex items-center gap-2 text-white border-b border-transparent hover:border-white transition-all pb-1 text-sm font-medium"
             >
               TAKE PRODUCT QUIZ <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
