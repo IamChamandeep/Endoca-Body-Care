@@ -8,10 +8,10 @@ declare global {
 
 export const trackPixelEvent = (eventName: string, options?: any) => {
   if (typeof window !== 'undefined' && window.fbq) {
-    console.log('[Facebook Pixel] Tracking:', eventName, options);
+    console.log(`[Facebook Pixel] 🟢 Firing Event: ${eventName}`, options || '');
     window.fbq('track', eventName, options);
   } else {
-    console.warn('[Facebook Pixel] window.fbq is not defined or blocked');
+    console.warn(`[Facebook Pixel] 🔴 Event Blocked/Missing: ${eventName} (window.fbq not found)`);
   }
 };
 
